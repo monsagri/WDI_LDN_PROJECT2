@@ -1,6 +1,7 @@
 module.exports =[
   {
     name: 'Lexi Cinema',
+    originalRating: 5,
     rating: 5,
     location: '194B Chamberlayne Rd, Kensal Green, London NW10 3JU',
     image: 'https://tr-images.condecdn.net/image/pG3bprGbAaO/crop/1620',
@@ -17,6 +18,7 @@ module.exports =[
   },
   {
     name: 'Everyman Screen on the Green',
+    originalRating: 5,
     rating: 5,
     location: '83 Upper St, London N1 0NP',
     image: 'https://tr-images.condecdn.net/image/Q80ZNoBdROM/crop/1620',
@@ -33,6 +35,7 @@ module.exports =[
   },
   {
     name: 'Arthouse Cinema',
+    originalRating: 5,
     rating: 5,
     location: '159A Tottenham Lane, N8 9BT ',
     image: 'https://assets.londonist.com/uploads/2016/09/i730/arthouse_790.jpg',
@@ -49,6 +52,7 @@ module.exports =[
   },
   {
     name: 'Cine Lumiere',
+    originalRating: 5,
     rating: 5,
     location: '17 Queensberry Place, SW7 2DT',
     image: 'https://assets.londonist.com/uploads/2016/09/i730/institute_francais_875.jpg',
@@ -65,6 +69,7 @@ module.exports =[
   },
   {
     name: 'Electric Cinema',
+    originalRating: 5,
     rating: 5,
     location: '191 Portobello Road, W11 2ED ',
     image: 'https://assets.londonist.com/uploads/2016/09/i730/electric_875.jpg',
@@ -81,6 +86,7 @@ module.exports =[
   },
   {
     name: 'Phoenix Cinema',
+    originalRating: 5,
     rating: 5,
     location: '52 High Road, N2 9PJ',
     image: 'https://assets.londonist.com/uploads/2016/09/i730/phoenix_cinema_frontage_875.jpg',

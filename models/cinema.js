@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const commentSchema = new mongoose.Schema({
+  rating: { type: Number, min: 0, max: 5, required: true },
   content: {type: String},
   user: { type: mongoose.Schema.ObjectId, ref: 'User'}
 });
@@ -11,7 +12,8 @@ commentSchema.methods.isOwnedBy = function(user){
 
 const schema = new mongoose.Schema({
   name: { type: String, minlength: 2, required: true },
-  rating: { type: Number, min: 0, max: 5, required: true },
+  originalRating: { type: Number, min: 0, max: 5, required: true },
+  rating: { type: Number},
   location: { type: String, minlength: 5, required: true },
   image: { type: String, required: true },
   screens: { type: Number },
@@ -26,6 +28,15 @@ const schema = new mongoose.Schema({
   description: { type: String, required: true },
   comments: [commentSchema]
 });
+
+schema.methods.calculateRating = function calculateRating() {
+  let currentRating = this.originalRating;
+  this.comments.forEach(comment => {
+    currentRating += comment.rating;
+  });
+  currentRating = currentRating / (this.comments.length + 1);
+  return currentRating;
+};
 
 // Rating should be included in comments in order to allow removing individual ratings
 module.exports = mongoose.model('Cinema', schema);
