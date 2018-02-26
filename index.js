@@ -11,10 +11,16 @@ mongoose.Promise = require('bluebird');
 const bodyParser = require('body-parser');
 // Add method-override to allow posting and editing
 const methodOverride = require('method-override');
+// Add express-session to handle session cookies
+const session = require('express-session');
+//Get Flash for flash messages
+const flash = require('express-flash');
+
 
 // require homemade dependencies
 const router = require('./config/router');
-
+// load userAuth
+const userAuth = require('./lib/userAuth');
 
 // Set app to use express
 const app = express();
@@ -25,6 +31,7 @@ app.set('views', `${__dirname}/views`);
 
 // Use Body Parser to understand form input
 app.use(bodyParser.urlencoded({extended: true}));
+
 // Use Method override
 app.use(methodOverride(req => {
   // check whether we have a req.body and if there is an object method in there. Extract it to know what to do with the body and remove it
@@ -35,6 +42,17 @@ app.use(methodOverride(req => {
     return method;
   }
 }));
+
+// Use express sessions
+app.use(session({
+  secret: 'SKf.31_41Y^fmes5', // a random key used to encrypt the session cookie
+  resave: false,
+  saveUninitialized: false
+}));
+
+// use our personal userAuth
+app.use(userAuth);
+
 
 // connect to the database
 

@@ -7,12 +7,27 @@ function showRoute(req, res) {
 }
 
 // post form input and login if it matches
-function loginRoute(req, res) {
-  User.findOne(req.body.name)
-    .then(user => console.log(user))
-    .then(() => res.redirect('cinemas/'));
+function loginRoute(req, res, next) {
+  User.findOne({email: req.body.email})
+    .then(user => {
+      if(!user || !user.validatePassword(req.body.password)){
+        return res.redirect('/login');
+      }
+      //store the logged in user's Id into the session cookie
+      req.session.userId = user._id;
+      //
+      // req.flash('success', `Welcome back ${user.username}!`);
+      res.redirect('/cinemas');
+    })
+    .catch(next);
 }
+
+function logoutRoute(req, res) {
+  req.session.regenerate(() => res.redirect('/'));
+}
+
 module.exports = {
   show: showRoute,
-  login: loginRoute
+  login: loginRoute,
+  logout: logoutRoute
 };

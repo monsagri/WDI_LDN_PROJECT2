@@ -50,6 +50,30 @@ function deleteRoute(req, res) {
     .then(cinema => cinema.remove())
     .then(() => res.redirect('/cinemas/'));
 }
+
+//creating a comment
+function commentsCreateRoute(req, res, next){
+  req.body.user = req.currentUser;
+  Cinema.findById(req.params.id)
+    .then(cinema => {
+      console.log(cinema);
+      cinema.comments.push(req.body);
+      return cinema.save();
+    })
+    .then(cinema => res.redirect(`/cinemas/${cinema._id}`))
+    .catch(next);
+}
+
+function commentsDeleteRoute(req, res, next){
+  Cinema.findById(req.params.id)
+    .then(cinema => {
+      const comment = cinema.comments.id(req.params.commentId);
+      comment.remove();
+      return cinema.save();
+    })
+    .then(cinema => res.redirect(`/cinemas/${cinema._id}`))
+    .catch(next);
+}
 module.exports = {
   index: indexRoute,
   new: newRoute,
@@ -57,5 +81,7 @@ module.exports = {
   show: showRoute,
   edit: editRoute,
   update: updateRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  commentsCreate: commentsCreateRoute,
+  commentsDelete: commentsDeleteRoute
 };

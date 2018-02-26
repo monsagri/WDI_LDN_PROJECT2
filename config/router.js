@@ -1,8 +1,10 @@
-// require 3rd party dependencies
+// require my dependencies
 const router = require('express').Router();
 const cinemasCon = require('../controllers/cinemas_con');
 const registrationsCon = require('../controllers/registrations_con');
 const sessionsCon = require('../controllers/sessions_con');
+// load secureRoute
+const secureRoute = require('../lib/secureRoute');
 
 
 // set up our request handlers
@@ -10,18 +12,24 @@ router.get('/', (req, res) => res.render('pages/home'));
 
 router.route('/cinemas')
   .get(cinemasCon.index)
-  .post(cinemasCon.create);
+  .post(secureRoute, cinemasCon.create);
 
 router.route('/cinemas/new')
-  .get(cinemasCon.new);
+  .get(secureRoute, cinemasCon.new);
 
 router.route('/cinemas/:id')
   .get(cinemasCon.show)
-  .put(cinemasCon.update)
-  .delete(cinemasCon.delete);
+  .put(secureRoute, cinemasCon.update)
+  .delete(secureRoute, cinemasCon.delete);
 
 router.route('/cinemas/:id/edit')
-  .get(cinemasCon.edit);
+  .get(secureRoute, cinemasCon.edit);
+
+router.route('/cinemas/:id/comments')
+  .post(secureRoute, cinemasCon.commentsCreate);
+
+router.route('/cinemas/:id/comments/:commentId')
+  .delete(secureRoute, cinemasCon.commentsDelete);
 
 router.route('/register')
   .get(registrationsCon.new)
@@ -30,6 +38,9 @@ router.route('/register')
 router.route('/login')
   .get(sessionsCon.show)
   .post(sessionsCon.login);
+
+router.route('/logout')
+  .get(sessionsCon.logout);
 
 
 module.exports = router;

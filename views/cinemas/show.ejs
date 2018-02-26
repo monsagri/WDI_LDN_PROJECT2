@@ -11,22 +11,17 @@
       <div class="icon is-small">
         <i class="fa fa-pencil"></i>
       </div>
-      <p><%= cinema.tastingNotes %></p>
+      <p><%= cinema.description %></p>
 
-      <a href="/cinemas/<%= cinema._id %>/edit" class="button is-primary">Edit</a>
 
-      <form method="POST" action="/cinemas/<%= cinema._id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <button class="button is-danger">Delete</button>
-      </form>
 
       <% if(locals.isAuthenticated) { %>
         <a href="/cinemas/<%= cinema._id %>/edit" class="button is-primary">Edit</a>
 
-        // <form method="POST" action="/cinemas/<%= cinema._id %>">
-        //   <input type="hidden" name="_method" value="DELETE">
-        //   <button class="button is-danger">Delete</button>
-        // </form>
+        <form method="POST" action="/cinemas/<%= cinema._id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="button is-danger">Delete</button>
+        </form>
 
         <hr />
 
@@ -34,12 +29,12 @@
           <% cinema.comments.forEach(comment => { %>
             <li>
             <div class="box">
-            // <% if(comment.isOwnedBy(locals.currentUser)) { %>
-            //   <form class="delete" method="POST" action="/cinemas/<%= cinema._id %>/comments/<%= comment._id %>">
-            //   <input type="hidden" name="_method" value="DELETE">
-            //   <button class="delete">x</button>
-            //   </form>
-            // <% } %>
+            <% if(comment.isOwnedBy(locals.currentUser)) { %>
+              <form class="delete" method="POST" action="/cinemas/<%= cinema._id %>/comments/<%= comment._id %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="delete">x</button>
+              </form>
+            <% } %>
               <article class="media">
                 <div class="media-left">
                   <figure class="image is-64x64">
@@ -64,10 +59,10 @@
           <% }) %>
         </ul>
 
-        // <form method="POST" action="/cinemas/<%= cinema._id %>/comments">
-        // <textarea class="textarea" name="content"></textarea>
-        // <button class="button is-primary">Submit</button>
-        // </form>
+        <form method="POST" action="/cinemas/<%= cinema._id %>/comments">
+        <textarea class="textarea" name="content"></textarea>
+        <button class="button is-primary">Submit</button>
+        </form>
       <% } %>
     </div>
   </div>
