@@ -12,4 +12,4 @@ schema
     this._passwordConfirmation = passwordConfirmation;
   });
 
-module.exports = ('User', schema);
+module.exports = mongoose.model('User', schema);

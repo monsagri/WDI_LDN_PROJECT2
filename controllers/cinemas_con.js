@@ -1,3 +1,4 @@
+// get the cinema model
 const Cinema = require('../models/cinema');
 
 // rendering the cinema index

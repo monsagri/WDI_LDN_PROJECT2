@@ -1,6 +1,8 @@
 // require 3rd party dependencies
 const router = require('express').Router();
 const cinemasCon = require('../controllers/cinemas_con');
+const registrationsCon = require('../controllers/registrations_con');
+const sessionsCon = require('../controllers/sessions_con');
 
 
 // set up our request handlers
@@ -19,13 +21,15 @@ router.route('/cinemas/:id')
   .delete(cinemasCon.delete);
 
 router.route('/cinemas/:id/edit')
-  // .put(cinemasCon.update)
   .get(cinemasCon.edit);
 
-router.route('/cinemas/:id/edit')
-  // .get(cinemasCon.edit);
+router.route('/register')
+  .get(registrationsCon.new)
+  .post(registrationsCon.create);
 
-
+router.route('/login')
+  .get(sessionsCon.show)
+  .post(sessionsCon.login);
 
 
 module.exports = router;
