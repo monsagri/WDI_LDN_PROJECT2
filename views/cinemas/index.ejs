@@ -1,0 +1,21 @@
+<main class="container">
+  <div class="columns is-multiline">
+    <% cinemas.forEach(cinema => { %>
+    <div class="column is-one-quarter-desktop is-half-tablet">
+      <a href="/cinemas/<%= cinema._id %>">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image">
+              <img src="<%= cinema.images[0].content %>" alt="<%= cinema.name %>">
+            </figure>
+          </div>
+          <div class="card-content">
+            <h3 class="title"><%= cinema.name %></h3>
+            <h4 class="subtitle">Rating: <%= cinema.rating %></h4>
+          </div>
+        </div>
+        </a>
+      </div>
+    <% }) %>
+  </div>
+</main>
