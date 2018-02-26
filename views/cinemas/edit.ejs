@@ -1,0 +1,121 @@
+<div class="container">
+  <form method="POST" action="/cinemas/<%= cinema._id %>">
+
+    <input type="hidden" name="_method" value="PUT">
+
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" name="name" type="text" placeholder="Name" value="<%= cinema.name %>" required minlength = "2">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Location</label>
+      <div class="control">
+        <input class="input" name="location" type="text" placeholder="Location" value="<%= cinema.location %>" required minlength = "5">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Rating</label>
+      <div class="control">
+        <div class="select">
+          <select name="rating">
+            <option selected disabled hidden><%= cinema.rating %></option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Description</label>
+      <div class="control">
+        <textarea class="textarea" name="description" placeholder="Description" maxlength="500"><%= cinema.description %></textarea>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Number of Screens</label>
+      <div class="control">
+        <input class="input" name="screens" type="text" placeholder="Number of Screens" value="<%= cinema.screens %>" required min = "0">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Image</label>
+      <div class="control">
+        <input class="input" name="image" type="text" placeholder="Image" value="<%= cinema.image %>" required >
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Restaurant</label>
+      <div class="control">
+        <label class="radio">
+        <input type="radio" name="restaurant" value="true">
+        Restaurant available
+        </label>
+        <label class="radio">
+        <input type="radio" name="restaurant" value="false">
+        No Restaurant
+        </label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Licensed</label>
+      <div class="control">
+        <label class="radio">
+        <input type="radio" name="alcohol" value="true">
+        Sell Alcohol
+        </label>
+        <label class="radio">
+        <input type="radio" name="alcohol" value="false">
+        No License
+        </label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Parking</label>
+      <div class="control">
+        <label class="radio">
+        <input type="radio" name="parking" value="true">
+        Parking Available
+        </label>
+        <label class="radio">
+        <input type="radio" name="parking" value="false">
+        No Parking
+        </label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Wheelchair accessible</label>
+      <div class="control">
+        <label class="radio">
+        <input type="radio" name="wheelchair" value="true">
+        Fully Accessible
+        </label>
+        <label class="radio">
+        <input type="radio" name="wheelchair" value="false">
+        Not Accessible
+        </label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">OST showings</label>
+      <div class="control">
+        <label class="radio">
+        <input type="radio" name="ost" value="true">
+        OST showings available
+        </label>
+        <label class="radio">
+        <input type="radio" name="ost" value="false">
+        No OST showings
+        </label>
+      </div>
+    </div>
+    <div class="control">
+      <button class="button is-primary">Submit</button>
+    </div>
+  </form>
+</div>

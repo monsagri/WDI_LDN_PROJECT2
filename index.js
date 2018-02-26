@@ -9,6 +9,8 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 // require body-parser to deal with creating new stuff
 const bodyParser = require('body-parser');
+// Add method-override to allow posting and editing
+const methodOverride = require('method-override');
 
 // require homemade dependencies
 const router = require('./config/router');
@@ -22,7 +24,17 @@ app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 
 // Use Body Parser to understand form input
-app.use(bodyParser);
+app.use(bodyParser.urlencoded({extended: true}));
+// Use Method override
+app.use(methodOverride(req => {
+  // check whether we have a req.body and if there is an object method in there. Extract it to know what to do with the body and remove it
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    const method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
 
 // connect to the database
 

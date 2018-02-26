@@ -6,8 +6,16 @@ function indexRoute(req, res) {
     .then(cinemas => res.render('cinemas/index', { cinemas } ));
 }
 
-function createRoute(req, res, next) {
+// rendering the new route
+function newRoute(req, res) {
+  res.render('cinemas/new');
+}
 
+// rendering the create route
+function createRoute(req, res, next) {
+  Cinema.create(req.body)
+    .then(() => res.redirect('cinemas/'))
+    .catch(next);
 }
 
 // rendering the show Route
@@ -22,9 +30,31 @@ function showRoute(req, res, next) {
     .catch(next);
 }
 
+// rendering the edit route
+function editRoute(req, res) {
+  Cinema.findById(req.params.id)
+    .then(cinema => res.render('cinemas/edit', { cinema }));
+}
+// rendering the update route
+function updateRoute(req, res) {
+  Cinema.findById(req.params.id)
+    .then(cinema => Object.assign(cinema, req.body))
+    .then(cinema => cinema.save())
+    .then(() => res.redirect(`/cinemas/${req.params.id}`));
+}
 
+// rendering the DeleteRoute
+function deleteRoute(req, res) {
+  Cinema.findById(req.params.id)
+    .then(cinema => cinema.remove())
+    .then(() => res.redirect('/cinemas/'));
+}
 module.exports = {
   index: indexRoute,
+  new: newRoute,
   create: createRoute,
-  show: showRoute
+  show: showRoute,
+  edit: editRoute,
+  update: updateRoute,
+  delete: deleteRoute
 };
