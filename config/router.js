@@ -39,6 +39,9 @@ router.route('/login')
   .get(sessionsCon.show)
   .post(sessionsCon.login);
 
+router.route('/myprofile')
+  .get(sessionsCon.myProfile);
+
 router.route('/logout')
   .get(sessionsCon.logout);
 

@@ -22,6 +22,11 @@ function loginRoute(req, res, next) {
     .catch(next);
 }
 
+function myProfileRoute(req, res) {
+  User.findOne(req.currentUser)
+    .then(user => res.render('sessions/myProfile', { user }));
+}
+
 function logoutRoute(req, res) {
   req.session.regenerate(() => res.redirect('/'));
 }
@@ -29,5 +34,6 @@ function logoutRoute(req, res) {
 module.exports = {
   show: showRoute,
   login: loginRoute,
+  myProfile: myProfileRoute,
   logout: logoutRoute
 };

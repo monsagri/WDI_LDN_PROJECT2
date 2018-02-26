@@ -1,10 +1,18 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const commentSchema = new mongoose.Schema({
+  rating: { type: Number, min: 0, max: 5, required: true },
+  content: {type: String},
+  user: { type: mongoose.Schema.ObjectId, ref: 'User'}
+});
+
 const schema = new mongoose.Schema({
   username: { type: String, required: true },
+  avatar: { type: String },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  comments: [commentSchema]
 });
 
 // Add the virtual for passwordConfirmation

@@ -1,5 +1,7 @@
 // get the cinema model
 const Cinema = require('../models/cinema');
+// Get the User model
+const User = require('../models/user');
 
 // rendering the cinema index
 function indexRoute(req, res) {
@@ -54,13 +56,22 @@ function deleteRoute(req, res) {
 //creating a comment
 function commentsCreateRoute(req, res, next){
   req.body.user = req.currentUser;
+  const thisCinema = req.params.id;
   Cinema.findById(req.params.id)
     .then(cinema => {
       console.log(cinema);
       cinema.comments.push(req.body);
       return cinema.save();
     })
-    .then(cinema => res.redirect(`/cinemas/${cinema._id}`))
+    .then(() => {
+      User.findOne(req.currentUser)
+        .then(user => {
+          console.log(req.body);
+          user.comments.push(req.body);
+          return user.save();
+        });
+    })
+    .then(() => res.redirect(`/cinemas/${thisCinema}`))
     .catch(next);
 }
 

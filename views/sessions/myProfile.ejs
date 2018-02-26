@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="columns">
+    <div class="column">
+      <figure class="image">
+        <img src="<%= user.avatar %>" alt="<%= user.username %>">
+      </figure>
+    </div>
+    <div class="column">
+      <h3 class="title"><%= user.username %></h3>
+      <h4 class="subtitle"><%= user.email %></h4>
+      <div class="">
+        <div class="icon is-small">
+          <i class="fa fa-pencil"></i>
+        </div>
+        <span>My Comments</span>
+        <ul class="comments">
+          <% user.comments.forEach(comment => { %>
+            <li>
+            <div class="box">
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <h4> Rating: <%= comment.rating %> </h4>
+                    <p>
+                      <%= comment.content %>
+                    </p>
+                  </div>
+                </div>
+              </article>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+      <div class="">
+        <div class="icon is-small">
+          <i class="fa fa-heart"></i>
+        </div>
+        <span>My Favorites</span>
+      </div>
+    </div>
+  </div>
+</div>
