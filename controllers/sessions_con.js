@@ -1,3 +1,11 @@
+// 3rd party stuff
+// require mongoose to work on database
+const mongoose = require('mongoose');
+// set mongoose to use bluebird for promises
+mongoose.Promise = require('bluebird');
+
+// // get the cinema model
+// const Cinema = require('../models/cinema');
 // Get the User model
 const User = require('../models/user');
 
@@ -15,6 +23,8 @@ function loginRoute(req, res, next) {
       }
       //store the logged in user's Id into the session cookie
       req.session.userId = user._id;
+      // if the user is an admin store that as well
+      if(user.admin) req.session.isAdmin = true;
       //
       // req.flash('success', `Welcome back ${user.username}!`);
       res.redirect('/cinemas');
@@ -27,6 +37,24 @@ function myProfileRoute(req, res) {
     .then(user => res.render('sessions/myProfile', { user }));
 }
 
+// This is some advanced magic shit
+
+// function moderationRoute(req, res) {
+//   console.log(Cinema.find(
+//     { comments: { $exists: true } } ));
+//   const unapprovedComments = [];
+//   // Search through all cinema records
+//   Cinema.find(
+//     { comments: { $exists: true } } ).forEach(cinema => {
+//     // find comments within the record that are not approced and add them to the unapprovedComments array
+//     cinema.comments.filter(comment => comment.approved !== true).forEach(comment => {
+//       unapprovedComments.push(comment);
+//     });
+//   })
+//     .then(res.render('sessions/moderation', { unapprovedComments }));
+//
+// }
+
 function logoutRoute(req, res) {
   req.session.regenerate(() => res.redirect('/'));
 }
@@ -35,5 +63,6 @@ module.exports = {
   show: showRoute,
   login: loginRoute,
   myProfile: myProfileRoute,
+  // moderation: moderationRoute,
   logout: logoutRoute
 };

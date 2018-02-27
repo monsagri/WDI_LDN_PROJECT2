@@ -59,7 +59,6 @@ function commentsCreateRoute(req, res, next){
   const thisCinema = req.params.id;
   Cinema.findById(req.params.id)
     .then(cinema => {
-      console.log(cinema);
       cinema.comments.push(req.body);
       return cinema.save();
     })
@@ -85,6 +84,21 @@ function commentsDeleteRoute(req, res, next){
     .then(cinema => res.redirect(`/cinemas/${cinema._id}`))
     .catch(next);
 }
+
+function commentApproveRoute(req, res) {
+
+  Cinema.findById(req.params.id)
+    .then(cinema => {
+      console.log(cinema.comments);
+      const comment = cinema.comments.id(req.params.commentId);
+      console.log('working on ' + comment);
+      comment.approved = true;
+      console.log(comment + ' was changed');
+      return cinema.save();
+    })
+    .then(() => res.redirect(`/cinemas/${req.params.id}`));
+}
+
 module.exports = {
   index: indexRoute,
   new: newRoute,
@@ -94,5 +108,6 @@ module.exports = {
   update: updateRoute,
   delete: deleteRoute,
   commentsCreate: commentsCreateRoute,
-  commentsDelete: commentsDeleteRoute
+  commentsDelete: commentsDeleteRoute,
+  commentApprove: commentApproveRoute
 };

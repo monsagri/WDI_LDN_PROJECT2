@@ -3,11 +3,17 @@ const mongoose = require('mongoose');
 const commentSchema = new mongoose.Schema({
   rating: { type: Number, min: 0, max: 5, required: true },
   content: {type: String},
-  user: { type: mongoose.Schema.ObjectId, ref: 'User'}
+  user: { type: mongoose.Schema.ObjectId, ref: 'User'},
+  approved: { type: Boolean }
 });
 
 commentSchema.methods.isOwnedBy = function(user){
   return this.user._id && user._id.equals(this.user._id);
+};
+
+commentSchema.methods.approve = function(){
+  this.approved = true;
+  return console.log(`comment ${this._id} approved`);
 };
 
 const schema = new mongoose.Schema({
@@ -29,14 +35,15 @@ const schema = new mongoose.Schema({
   comments: [commentSchema]
 });
 
-schema.methods.calculateRating = function calculateRating() {
-  let currentRating = this.originalRating;
-  this.comments.forEach(comment => {
-    currentRating += comment.rating;
+schema.virtual('averageRating')
+  .get(function calculateRating() {
+    let currentRating = this.originalRating;
+    this.comments.forEach(comment => {
+      currentRating += comment.rating;
+    });
+    currentRating = currentRating / (this.comments.length + 1);
+    return currentRating;
   });
-  currentRating = currentRating / (this.comments.length + 1);
-  return currentRating;
-};
 
 // Rating should be included in comments in order to allow removing individual ratings
 module.exports = mongoose.model('Cinema', schema);

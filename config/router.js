@@ -5,6 +5,7 @@ const registrationsCon = require('../controllers/registrations_con');
 const sessionsCon = require('../controllers/sessions_con');
 // load secureRoute
 const secureRoute = require('../lib/secureRoute');
+const adminRoute = require('../lib/adminRoute');
 
 
 // set up our request handlers
@@ -29,7 +30,8 @@ router.route('/cinemas/:id/comments')
   .post(secureRoute, cinemasCon.commentsCreate);
 
 router.route('/cinemas/:id/comments/:commentId')
-  .delete(secureRoute, cinemasCon.commentsDelete);
+  .delete(secureRoute, cinemasCon.commentsDelete)
+  .put(adminRoute, cinemasCon.commentApprove);
 
 router.route('/register')
   .get(registrationsCon.new)
@@ -40,7 +42,10 @@ router.route('/login')
   .post(sessionsCon.login);
 
 router.route('/myprofile')
-  .get(sessionsCon.myProfile);
+  .get(secureRoute, sessionsCon.myProfile);
+
+// router.route('/moderation')
+//   .get(adminRoute, sessionsCon.moderation);
 
 router.route('/logout')
   .get(sessionsCon.logout);
