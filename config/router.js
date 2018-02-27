@@ -29,6 +29,11 @@ router.route('/profiles/:id')
 router.route('/cinemas/:id/edit')
   .get(secureRoute, cinemasCon.edit);
 
+router.route('/cinemas/:id/favorite')
+  .put(secureRoute, sessionsCon.favorite)
+  .delete(secureRoute, sessionsCon.unFavorite);
+
+
 router.route('/cinemas/:id/comments')
   .post(secureRoute, cinemasCon.commentsCreate);
 

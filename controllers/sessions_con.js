@@ -8,6 +8,8 @@ mongoose.Promise = require('bluebird');
 // const Cinema = require('../models/cinema');
 // Get the User model
 const User = require('../models/user');
+// get the cinema model
+// const Cinema = require('../models/cinema');
 
 // render the login form
 function showRoute(req, res) {
@@ -36,12 +38,28 @@ function myProfileRoute(req, res) {
   User.findOne(req.currentUser._id)
     .populate('comments.cinema')
     .populate('comments.user')
+    .populate('favorites')
     .then(user => {
       res.render('sessions/myProfile', { user });
     });
 }
 
 function addFavoriteRoute(req, res) {
+  User.findById(req.currentUser._id)
+    .then(user => {
+      user.favorites.push(req.params.id);
+      return user.save();
+    });
+  res.redirect(`/cinemas/${req.params.id}`);
+}
+
+function unFavoriteRoute(req, res) {
+  User.findById(req.currentUser._id)
+    .then(user => {
+      const index = user.favorites.indexOf(req.params.id);
+      user.favorites.splice(index, 1);
+      return user.save();
+    });
   res.redirect(`/cinemas/${req.params.id}`);
 }
 
@@ -71,7 +89,8 @@ module.exports = {
   show: showRoute,
   login: loginRoute,
   myProfile: myProfileRoute,
-  addFavorite: addFavoriteRoute,
+  favorite: addFavoriteRoute,
+  unFavorite: unFavoriteRoute,
   // moderation: moderationRoute,
   logout: logoutRoute
 };

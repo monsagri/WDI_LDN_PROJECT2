@@ -40,6 +40,28 @@
           <i class="fa fa-heart"></i>
         </div>
         <span>My Favorites</span>
+        <ul class="favorites">
+          <% user.favorites.forEach(favorite => { %>
+            <li>
+            <div class="box">
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <h2> <a href="/cinemas/<%= favorite._id %>"> <%= favorite.name %> </a> <h2>
+                    <figure class="image">
+                      <img src="<%= favorite.image %>" alt="<%= favorite.name %>">
+                    </figure>
+                    <h4> Rating: <%= favorite.rating %> </h4>
+                    <p>
+                      <%= favorite.description %>
+                    </p>
+                  </div>
+                </div>
+              </article>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
       </div>
     </div>
   </div>

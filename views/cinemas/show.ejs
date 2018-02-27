@@ -48,9 +48,20 @@
           <button class="button is-danger">Delete</button>
         </form>
 
-        <hr />
+        <% } %>
 
-          <% } %>
+        <% if(locals.isAuthenticated) { %>
+          <form class="favorite" method="POST" action="/cinemas/<%= cinema._id %>/favorite">
+          <input type="hidden" name="_method" value="PUT">
+          <button class="primary">Favorite</button>
+          </form>
+          <form class="unfavorite" method="POST" action="/cinemas/<%= cinema._id %>/favorite">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="primary">Unfavorite</button>
+          </form>
+        <% } %>
+
+        <hr />
 
         <ul class="comments">
           <% if(locals.isAdmin) { %>
@@ -65,6 +76,7 @@
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="delete">x</button>
                 </form>
+
 
                 <% if(comment.approved !== true) { %>
                 <form class="approve" method="POST" action="/cinemas/<%= cinema._id %>/comments/<%= comment._id %>">
