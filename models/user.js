@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const commentSchema = new mongoose.Schema({
   rating: { type: Number, min: 0, max: 5, required: true },
   content: {type: String},
+  cinema: { type: mongoose.Schema.ObjectId, ref: 'Cinema'},
   user: { type: mongoose.Schema.ObjectId, ref: 'User'}
 });
 
@@ -13,7 +14,8 @@ const schema = new mongoose.Schema({
   admin: { type: Boolean },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  comments: [commentSchema]
+  comments: [commentSchema],
+  favorites: [{ type: mongoose.Schema.ObjectId, ref: 'Cinema'}]
 });
 
 // Add the virtual for passwordConfirmation

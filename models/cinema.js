@@ -4,16 +4,12 @@ const commentSchema = new mongoose.Schema({
   rating: { type: Number, min: 0, max: 5, required: true },
   content: {type: String},
   user: { type: mongoose.Schema.ObjectId, ref: 'User'},
+  cinema: { type: String},
   approved: { type: Boolean }
 });
 
 commentSchema.methods.isOwnedBy = function(user){
   return this.user._id && user._id.equals(this.user._id);
-};
-
-commentSchema.methods.approve = function(){
-  this.approved = true;
-  return console.log(`comment ${this._id} approved`);
 };
 
 const schema = new mongoose.Schema({

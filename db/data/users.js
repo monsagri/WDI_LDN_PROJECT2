@@ -6,6 +6,7 @@ module.exports = [
     email: 'monsagri@gmail.com',
     password: 'lalilu123',
     passwordConfirmation: 'lalilu123',
-    comments: []
+    comments: [],
+    favorites: []
   }
 ];

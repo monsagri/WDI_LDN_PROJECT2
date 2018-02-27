@@ -33,8 +33,16 @@ function loginRoute(req, res, next) {
 }
 
 function myProfileRoute(req, res) {
-  User.findOne(req.currentUser)
-    .then(user => res.render('sessions/myProfile', { user }));
+  User.findOne(req.currentUser._id)
+    .populate('comments.cinema')
+    .populate('comments.user')
+    .then(user => {
+      res.render('sessions/myProfile', { user });
+    });
+}
+
+function addFavoriteRoute(req, res) {
+  res.redirect(`/cinemas/${req.params.id}`);
 }
 
 // This is some advanced magic shit
@@ -63,6 +71,7 @@ module.exports = {
   show: showRoute,
   login: loginRoute,
   myProfile: myProfileRoute,
+  addFavorite: addFavoriteRoute,
   // moderation: moderationRoute,
   logout: logoutRoute
 };

@@ -23,6 +23,9 @@ router.route('/cinemas/:id')
   .put(secureRoute, cinemasCon.update)
   .delete(secureRoute, cinemasCon.delete);
 
+router.route('/profiles/:id')
+  .get(secureRoute, cinemasCon.profile);
+
 router.route('/cinemas/:id/edit')
   .get(secureRoute, cinemasCon.edit);
 

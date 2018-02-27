@@ -7,12 +7,11 @@
     </div>
     <div class="column">
       <h3 class="title"><%= user.username %></h3>
-      <h4 class="subtitle"><%= user.email %></h4>
       <div class="">
         <div class="icon is-small">
           <i class="fa fa-pencil"></i>
         </div>
-        <span>My Comments</span>
+        <span><%= user.username %>'s Comments</span>
         <ul class="comments">
           <% user.comments.forEach(comment => { %>
             <% if(comment.cinema) { %>
@@ -34,12 +33,6 @@
             <% } %>
           <% }) %>
         </ul>
-      </div>
-      <div class="">
-        <div class="icon is-small">
-          <i class="fa fa-heart"></i>
-        </div>
-        <span>My Favorites</span>
       </div>
     </div>
   </div>

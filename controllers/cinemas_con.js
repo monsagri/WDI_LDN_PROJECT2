@@ -55,7 +55,8 @@ function deleteRoute(req, res) {
 
 //creating a comment
 function commentsCreateRoute(req, res, next){
-  req.body.user = req.currentUser;
+  req.body.user = req.currentUser._id;
+  req.body.cinema = req.url.replace(/cinemas|\/|comments|'|"/g,'');
   const thisCinema = req.params.id;
   Cinema.findById(req.params.id)
     .then(cinema => {
@@ -65,8 +66,8 @@ function commentsCreateRoute(req, res, next){
     .then(() => {
       User.findOne(req.currentUser)
         .then(user => {
-          console.log(req.body);
           user.comments.push(req.body);
+          console.log(user.comments[user.comments.length-1]);
           return user.save();
         });
     })
@@ -89,14 +90,18 @@ function commentApproveRoute(req, res) {
 
   Cinema.findById(req.params.id)
     .then(cinema => {
-      console.log(cinema.comments);
       const comment = cinema.comments.id(req.params.commentId);
-      console.log('working on ' + comment);
       comment.approved = true;
-      console.log(comment + ' was changed');
       return cinema.save();
     })
     .then(() => res.redirect(`/cinemas/${req.params.id}`));
+}
+
+function profileRoute(req, res) {
+  User.findById(req.params.id)
+    .populate('comments.cinema')
+    .populate('comments.user')
+    .then(user => res.render('cinemas/profiles', { user }));
 }
 
 module.exports = {
@@ -109,5 +114,6 @@ module.exports = {
   delete: deleteRoute,
   commentsCreate: commentsCreateRoute,
   commentsDelete: commentsDeleteRoute,
-  commentApprove: commentApproveRoute
+  commentApprove: commentApproveRoute,
+  profile: profileRoute
 };
