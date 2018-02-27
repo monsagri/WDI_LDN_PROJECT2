@@ -14,7 +14,8 @@ module.exports =[
     userimages: [{
       content: 'https://tr-images.condecdn.net/image/pG3bprGbAaO/crop/1620'
     }],
-    description: 'Description goes here.'
+    description: 'Description goes here.',
+    favoritedBy: []
   },
   {
     name: 'Everyman Screen on the Green',
@@ -31,7 +32,8 @@ module.exports =[
     userimages: [{
       content: 'https://tr-images.condecdn.net/image/Q80ZNoBdROM/crop/1620'
     }],
-    description: 'Description goes here.'
+    description: 'Description goes here.',
+    favoritedBy: []
   },
   {
     name: 'Arthouse Cinema',
@@ -48,7 +50,8 @@ module.exports =[
     userimages: [{
       content: 'https://assets.londonist.com/uploads/2016/09/i730/arthouse_790.jpg'
     }],
-    description: 'Description goes here.'
+    description: 'Description goes here.',
+    favoritedBy: []
   },
   {
     name: 'Cine Lumiere',
@@ -65,7 +68,8 @@ module.exports =[
     userimages: [{
       content: 'https://assets.londonist.com/uploads/2016/09/i730/institute_francais_875.jpg'
     }],
-    description: 'Description goes here.'
+    description: 'Description goes here.',
+    favoritedBy: []
   },
   {
     name: 'Electric Cinema',
@@ -82,7 +86,8 @@ module.exports =[
     userimages: [{
       content: 'https://assets.londonist.com/uploads/2016/09/i730/electric_875.jpg'
     }],
-    description: 'Description goes here.'
+    description: 'Description goes here.',
+    favoritedBy: []
   },
   {
     name: 'Phoenix Cinema',
@@ -99,6 +104,7 @@ module.exports =[
     userimages: [{
       content: 'https://assets.londonist.com/uploads/2016/09/i730/phoenix_cinema_frontage_875.jpg'
     }],
-    description: 'Description goes here.'
+    description: 'Description goes here.',
+    favoritedBy: []
   }
 ];

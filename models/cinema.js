@@ -28,7 +28,8 @@ const schema = new mongoose.Schema({
     content: String
   }],
   description: { type: String, required: true },
-  comments: [commentSchema]
+  comments: [commentSchema],
+  favoritedBy: []
 });
 
 schema.virtual('averageRating')

@@ -51,14 +51,17 @@
         <% } %>
 
         <% if(locals.isAuthenticated) { %>
-          <form class="favorite" method="POST" action="/cinemas/<%= cinema._id %>/favorite">
-          <input type="hidden" name="_method" value="PUT">
-          <button class="primary">Favorite</button>
-          </form>
-          <form class="unfavorite" method="POST" action="/cinemas/<%= cinema._id %>/favorite">
-          <input type="hidden" name="_method" value="DELETE">
-          <button class="primary">Unfavorite</button>
-          </form>
+          <% if(!cinema.favoritedBy.includes(locals.currentUser)) { %>
+            <form class="favorite" method="POST" action="/cinemas/<%= cinema._id %>/favorite">
+            <input type="hidden" name="_method" value="PUT">
+            <button class="primary">Favorite</button>
+            </form>
+            <% } else {%>
+            <form class="unfavorite" method="POST" action="/cinemas/<%= cinema._id %>/favorite">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="primary">Unfavorite</button>
+            </form>
+            <% } %>
         <% } %>
 
         <hr />
