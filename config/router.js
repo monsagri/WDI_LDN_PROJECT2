@@ -52,8 +52,12 @@ router.route('/login')
 router.route('/myprofile')
   .get(secureRoute, sessionsCon.myProfile);
 
-// router.route('/moderation')
-//   .get(adminRoute, sessionsCon.moderation);
+router.route('/moderation')
+  .get(adminRoute, sessionsCon.moderation);
+
+router.route('/moderation/:id/comments/:id')
+  .put(adminRoute, sessionsCon.moderatorApprove)
+  .delete(adminRoute, sessionsCon.moderatorDelete);
 
 router.route('/logout')
   .get(sessionsCon.logout);

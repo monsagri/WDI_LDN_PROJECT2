@@ -5,7 +5,7 @@ const commentSchema = new mongoose.Schema({
   content: {type: String},
   user: { type: mongoose.Schema.ObjectId, ref: 'User'},
   cinema: { type: String},
-  approved: { type: Boolean }
+  approved: { type: Boolean, default: false }
 });
 
 commentSchema.methods.isOwnedBy = function(user){

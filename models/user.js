@@ -5,7 +5,8 @@ const commentSchema = new mongoose.Schema({
   rating: { type: Number, min: 0, max: 5, required: true },
   content: {type: String},
   cinema: { type: mongoose.Schema.ObjectId, ref: 'Cinema'},
-  user: { type: mongoose.Schema.ObjectId, ref: 'User'}
+  user: { type: mongoose.Schema.ObjectId, ref: 'User'},
+  approved: { type: Boolean, default: false }
 });
 
 const schema = new mongoose.Schema({

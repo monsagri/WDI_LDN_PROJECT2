@@ -97,6 +97,7 @@ function commentApproveRoute(req, res) {
     .then(() => res.redirect(`/cinemas/${req.params.id}`));
 }
 
+
 function profileRoute(req, res) {
   User.findById(req.params.id)
     .populate('comments.cinema')

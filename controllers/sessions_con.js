@@ -77,8 +77,16 @@ function unFavoriteRoute(req, res) {
 // This is some advanced magic shit
 
 // function moderationRoute(req, res) {
-//   console.log(Cinema.find(
-//     { comments: { $exists: true } } ));
+//   console.log(Cinema.aggregate(
+//     [
+//       {
+//         $project: {
+//           name: 1,
+//           dimensions: { $objectToArray: '$comments' }
+//         }
+//       }
+//     ]
+//   ));
 //   const unapprovedComments = [];
 //   // Search through all cinema records
 //   Cinema.find(
@@ -92,6 +100,43 @@ function unFavoriteRoute(req, res) {
 //
 // }
 
+function moderationRoute(req, res) {
+  Cinema.find({ 'comments.approved': false })
+    .populate('comments.cinema')
+    .populate('comments.user')
+    .then(cinemas => {
+
+      const unapprovedComments = cinemas
+        .map(cinema => cinema.comments)
+        .reduce((flattened, comments) => flattened.concat(comments), [])
+        .filter(comment => !comment.approved);
+
+      res.render('sessions/moderation', { unapprovedComments });
+    });
+}
+
+function moderatorApproveRoute(req, res) {
+  // extract the cinema id from the url using magic
+  const cinemaId = req.url.replace(/moderation|cinemas|\/|comments.*|'|"/g,'');
+  Cinema.findById(cinemaId)
+    .then(cinema => {
+      const comment = cinema.comments.id(req.params.id);
+      comment.approved = true;
+      return cinema.save();
+    });
+  res.redirect('/moderation');
+}
+function moderatorDeleteRoute(req, res) {
+  const cinemaId = req.url.replace(/moderation|cinemas|\/|comments.*|'|"/g,'');
+  Cinema.findById(cinemaId)
+    .then(cinema => {
+      const comment = cinema.comments.id(req.params.id);
+      comment.remove();
+      return cinema.save();
+    });
+  res.redirect('/moderation');
+}
+
 function logoutRoute(req, res) {
   req.session.regenerate(() => res.redirect('/'));
 }
@@ -102,6 +147,8 @@ module.exports = {
   myProfile: myProfileRoute,
   favorite: addFavoriteRoute,
   unFavorite: unFavoriteRoute,
-  // moderation: moderationRoute,
+  moderation: moderationRoute,
+  moderatorApprove: moderatorApproveRoute,
+  moderatorDelete: moderatorDeleteRoute,
   logout: logoutRoute
 };

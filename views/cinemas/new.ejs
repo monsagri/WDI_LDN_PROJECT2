@@ -16,7 +16,7 @@
       <label class="label">Rating</label>
       <div class="control">
         <div class="select">
-          <select name="rating">
+          <select name="originalRating">
             <option>0</option>
             <option>1</option>
             <option>2</option>
@@ -28,15 +28,15 @@
       </div>
     </div>
     <div class="field">
-      <label class="label">Description</label>
+      <label class="label">Description (minimum length 100 characters)</label>
       <div class="control">
-        <textarea class="textarea" name="description" placeholder="Description" maxlength="500"></textarea>
+        <textarea class="textarea" name="description" placeholder="Description" required minlength = "100" maxlength="500"></textarea>
       </div>
     </div>
     <div class="field">
       <label class="label">Number of Screens</label>
       <div class="control">
-        <input class="input" name="screens" type="text" placeholder="Number of Screens" required min = "0">
+        <input class="input" name="screens" type="text" placeholder="Number of Screens" required type= Number min = "0">
       </div>
     </div>
     <div class="field">
