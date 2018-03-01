@@ -59,7 +59,7 @@ app.use(userAuth);
 
 // connect to the database
 
-mongoose.connect('mongodb://localhost/cinema-database');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/cinema-database');
 
 // use my Router
 app.use(router);
@@ -74,7 +74,7 @@ app.use((err, req, res, next) => { //eslint-disable-line
 
 // Configure the port
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 // Set app listen on port and console log something
 

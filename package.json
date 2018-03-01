@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "monsagri",
   "license": "MIT",
+  "scripts": {
+    "start": "node index"
+  },
   "dependencies": {
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.1",
