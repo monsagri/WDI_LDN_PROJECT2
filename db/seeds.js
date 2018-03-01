@@ -13,7 +13,7 @@ const userData = require('./data/users');
 const counterData = require('./data/counters');
 
 // connect to database
-mongoose.connect('mongodb://localhost/cinema-database', (err, db) => {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/cinema-database', (err, db) => {
   // clear database
   // db.dropDatabase();
   Cinema.collection.drop();
