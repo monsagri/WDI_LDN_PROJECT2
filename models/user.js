@@ -11,7 +11,7 @@ const commentSchema = new mongoose.Schema({
 
 const schema = new mongoose.Schema({
   username: { type: String, required: true },
-  avatar: { type: String },
+  avatar: { type: String, default: 'https://enbaca.com/web/assets/image-resources/avatar.png'},
   admin: { type: Boolean },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },

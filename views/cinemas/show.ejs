@@ -1,18 +1,20 @@
 <div class="container show">
   <div class="columns is-multiline">
-    <div class="column heroimage">
+    <div class="column heroimage is-paddingless">
       <figure class="image">
         <img src="<%= cinema.image %>" alt="<%= cinema.name %>">
       </figure>
     </div>
-    <% if(locals.isAdmin) { %>
-      <a href="/cinemas/<%= cinema._id %>/edit" class="button is-primary">Edit</a>
+    <div class="adminbuttons">
+      <% if(locals.isAdmin) { %>
+        <a href="/cinemas/<%= cinema._id %>/edit" class="button is-primary">Edit</a>
 
-      <form method="POST" action="/cinemas/<%= cinema._id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <button class="button is-danger">Delete</button>
-      </form>
-      <% } %>
+        <form method="POST" action="/cinemas/<%= cinema._id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="button is-danger">Delete</button>
+        </form>
+        <% } %>
+      </div>
     <div class="column credits is-full-desktop">
 
       <h3 class="title"><%= cinema.name %></h3>
@@ -46,47 +48,52 @@
           <td><%= cinema.parking %></td>
         </tr>
       </table>
+
+      <hr>
+
+      <div class="column comments is-full-desktop">
+        <h3 class="subtitle">What your fellow fanatics say</h3>
+          <ul class="comments">
+          <% cinema.comments.filter(comment => comment.approved === true).forEach(comment => { %>
+            <li>
+            <div class="box">
+            <% if(locals.isAuthenticated) { %>
+              <% if(comment.isOwnedBy(locals.currentUser) || locals.isAdmin) { %>
+                <form class="delete" style="float: right" method="POST" action="/cinemas/<%= cinema._id %>/comments/<%= comment._id %>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button class="delete" >x</button>
+                </form>
+              <% } %>
+            <% } %>
+              <article class="media">
+                <div class="media-left">
+                  <figure class="image is-64x64">
+                    <img src="<%= comment.user.avatar %>" alt="Image">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <div class="content">
+                    <% if(comment.user) { %>
+                      <a href="/profiles/<%= comment.user._id %>"> <%= comment.user.username %> </a>
+                    <% } %>
+                    <h4> Rating: <%= comment.rating %> </h4>
+                    <p>
+                      <%= comment.content %>
+                    </p>
+                  </div>
+                </div>
+              </article>
+              </div>
+            </li>
+          <% }) %>
+          </ul>
+        </div>
     </div>
 
-    <div class="column comments is-full-desktop">
 
-        <ul class="comments">
-        <% cinema.comments.filter(comment => comment.approved === true).forEach(comment => { %>
-          <li>
-          <div class="box">
-          <% if(locals.isAuthenticated) { %>
-            <% if(comment.isOwnedBy(locals.currentUser) || locals.isAdmin) { %>
-              <form class="delete" style="float: right" method="POST" action="/cinemas/<%= cinema._id %>/comments/<%= comment._id %>">
-              <input type="hidden" name="_method" value="DELETE">
-              <button class="delete" >x</button>
-              </form>
-            <% } %>
-          <% } %>
-            <article class="media">
-              <div class="media-left">
-                <figure class="image is-64x64">
-                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-                </figure>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <% if(comment.user) { %>
-                    <a href="/profiles/<%= comment.user._id %>"> <%= comment.user.username %> </a>
-                  <% } %>
-                  <h4> Rating: <%= comment.rating %> </h4>
-                  <p>
-                    <%= comment.content %>
-                  </p>
-                </div>
-              </div>
-            </article>
-            </div>
-          </li>
-        <% }) %>
-        </ul>
-      </div>
 
     <div class="column postcomment is-full-desktop">
+      <h3 class="subtitle">Tell us all about it!</h3>
         <form method="POST" action="/cinemas/<%= cinema._id %>/comments">
         <div class="field">
           <label class="label">Rating</label>

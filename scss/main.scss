@@ -1,8 +1,14 @@
 *{
+  font-family: 'Poiret One', cursive;
   body{
     background-color: #7f7f7f;
+    background-image: url('/images/cinema_background2.jpg');
+    background-size: auto;
+    height: 100%;
     .navbar {
       background-color: #ffe;
+      font-weight: 600;
+      font-size: 1.25rem;
       .navbar-brand {
         a {
           width: 15vw;
@@ -13,19 +19,22 @@
       background-image: url('/images/cinema_background2.jpg');
       background-size: cover;
       height: 100vh;
+      position: relative;
       div {
-        h1 {
-          color: #ffe;
-          font-size: 3rem;
+        position: absolute;
+        top: 10%;
+        .title {
+          font-weight: 800;
+          font-size: 5rem;
         }
-        h2 {
-          color: #ffe;
-          font-size: 2rem;
+        .subtitle {
+          font-weight: 500;
+          font-size: 2.5rem;
         }
       }
     }
     main{
-      background-color: #7f7f7f;
+      background-color: transparent;
       .columns{
         margin-top: 2vh;
         div {
@@ -48,63 +57,297 @@
       }
     }
     .show {
+      display: flex;
+      flex-direction: column;
+
+      .adminbuttons{
+        margin: 2vh auto;
+        display: flex;
+
+      }
       .heroimage {
-        margin-top: 2vh;
+        margin: 2vh 0;
         flex-basis: 100%;
         .image {
           img {
             height: 60vh;
-            width: 90vw;
+            width: 100%;
           }
         }
       }
       .credits{
+        font-family: 'Poller One', cursive;
         text-align: center;
         background-color: black;
-        color: white;
+        color: #ffd700;
         overflow: scroll;
         height: 50vh;
         width: 90vw;
-        padding: 0;
         flex-basis: 100%;
         .title{
-          color: white;
+          font-family: 'Poller One', cursive;
+          color: #ffd700;
           font-size: 4rem;
         }
         .subtitle{
-          color: white;
+          font-family: 'Poller One', cursive;
+          color: #ffd700;
         }
         table{
           margin: 0 auto;
+          font-family: 'Poller One', cursive;
+          tr {
+            display: flex;
+            justify-content: space-between;
+            td{
+              font-family: 'Poller One', cursive;
+            }
+          }
+        }
+        p {
+          font-family: 'Poller One', cursive;
         }
       }
       .comments{
+        font-family: 'Poller One', cursive;
         width: 90vw;
         padding: 0;
+        .box {
+          font-family: 'Poller One', cursive;
+          background-color: transparent;
+          color: white;
+          border: 1px white solid;
+          a{
+            font-size: 1rem;
+            font-family: 'Poller One', cursive;
+          }
+          h4 {
+            font-size: 1rem;
+            font-family: 'Poller One', cursive;
+          }
+          p {
+              font-family: 'Poller One', cursive;
+              color: #ffd700;
+            }
+
+        }
       }
-      .postcomments{
-        width: 90vw;
-        padding: 0;
+      .postcomment{
+        .subtitle {
+          margin-bottom: 0.25rem;
+          font-size: 3rem;
+          color: white;
+          font-weight: bold;
+          text-decoration: underline;
+        }
+        form{
+          .field{
+            .label{
+              font-size: 1.5rem;
+              color: white;
+              font-weight: bold;
+            }
+
+            .textarea {
+              width: 30vw;
+              background-color: #ffe;
+            }
+          }
+        }
+      }
+    }
+    .addcinema {
+      background-size: auto;
+      padding: 2.5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: transparent;
+      form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: transparent;
+        .field{
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          .label{
+            font-weight: 700;
+            text-decoration: underline;
+            font-size: 1.5rem;
+            color: white;
+            // text-shadow: 2px 1px rgba(255,215,0,0.5);
+          }
+          .input{
+            background-color: #ffe;
+            width: 40vw;
+          }
+          .control{
+            display: flex;
+            justify-content: center;
+            width: 40vw;
+          }
+          .textarea{
+            background-color: #ffe;
+          }
+          .control{
+            display: flex;
+            justify-content: space-between;
+            .select{
+              align-self: center;
+            }
+            .radio{
+              color: white;
+              font-size: 1.25rem;
+              font-weight: 600;
+              // text-shadow: 2px 1px rgba(255,215,0,0.5);
+            }
+          }
+          .radiocontrol {
+            width: 35vw;
+          }
+        }
       }
     }
     .login {
-      background-image: url('/images/cinema_background2.jpg');
-      form{
-        .field{
-          input{
-            background-color: #ffe;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: transparent;
+      div{
+        .title {
+          margin-bottom: 10vh;
+          font-size: 3rem;
+        }
+        form{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          background: transparent;
+          .field{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            label {
+              font-weight: 700;
+              text-decoration: underline;
+              font-size: 1.5rem;
+              color: white;
+            }
+            input{
+              background-color: #ffe;
+              width: 30vw;
+            }
           }
         }
       }
     }
     .registration {
-      background-image: url('/images/cinema_background2.jpg');
-      form{
-        .field{
-          input{
-            background-color: #ffe;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: transparent;
+      background-size: auto;
+      div{
+        .title {
+          margin-bottom: 10vh;
+          font-size: 3rem;
+        }
+        form{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          background: transparent;
+
+          .field{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            label {
+              font-weight: 700;
+              text-decoration: underline;
+              font-size: 1.5rem;
+              color: white;
+            }
+            input{
+              background-color: #ffe;
+              width: 40vw;
+            }
           }
         }
+      }
+    }
+    .moderation{
+      height: 100vh;
+    }
+    .myprofile{
+      height: 100%;
+      padding: 2.5%;
+      display: flex;
+      justify-content: space-between;
+      .columns {
+        .column{
+          .title {
+            font-size: 3rem;
+          }
+          .subtitle {
+            font-size: 1.5rem;
+            font-weight: 500;
+          }
+          span {
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-decoration: underline;
+          }
+        }
+      }
+      img {
+        width: 30vw;
+      }
+      .box {
+        max-height: 80vh;
+        width: 50vw;
+        overflow: scroll;
+        background-color: #ffe;
+        article {
+          height: 40vh;
+          padding: 5px;
+          overflow: scroll;
+          border-bottom: 1px solid black;
+          margin-bottom: 2.5vh;
+        }
+      }
+
+    }
+    .profiles{
+      height: 100vh;
+      padding: 2.5%;
+      display: flex;
+      justify-content: space-between;
+      img {
+        width: 30vw;
+      }
+      .box {
+        height: 70vh;
+        width: 50vw;
+        overflow: scroll;
+        background-color: #ffe;
+      }
+      article {
+        height: 25vh;
+        padding: 5px;
+        overflow: scroll;
+        border-bottom: 1px solid black;
+        margin-bottom: 2.5vh;
       }
     }
   }

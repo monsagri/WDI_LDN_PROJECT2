@@ -1,118 +1,121 @@
-<div class="container">
-  <form method="POST" action="/cinemas">
-    <div class="field">
-      <label class="label">Name</label>
-      <div class="control">
-        <input class="input" name="name" type="text" placeholder="Name" required minlength = "2">
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Location</label>
-      <div class="control">
-        <input class="input" name="location" type="text" placeholder="Location" required minlength = "5">
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Rating</label>
-      <div class="control">
-        <div class="select">
-          <select name="originalRating">
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
+<div class="container addcinema has-text-centered">
+  <div class="">
+    <h1 class="title">Join the party and attract new guests</h1>
+    <form method="POST" action="/cinemas">
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" name="name" type="text" placeholder="Name" required minlength = "2">
         </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Description (minimum length 100 characters)</label>
-      <div class="control">
-        <textarea class="textarea" name="description" placeholder="Description" required minlength = "100" maxlength="500"></textarea>
+      <div class="field">
+        <label class="label">Location</label>
+        <div class="control">
+          <input class="input" name="location" type="text" placeholder="Location" required minlength = "5">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Number of Screens</label>
-      <div class="control">
-        <input class="input" name="screens" placeholder="Number of Screens" required type="number" min = "0">
+      <div class="field">
+        <label class="label">Rating</label>
+        <div class="control">
+          <div class="select">
+            <select name="originalRating">
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Image (hyperlink )</label>
-      <div class="control">
-        <input class="input" name="image" type="text" placeholder="Image" required pattern = "^http.*">
+      <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+          <textarea class="textarea" name="description" placeholder="Description" required minlength = "100" maxlength="500"></textarea>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Restaurant</label>
-      <div class="control">
-        <label class="radio">
-        <input type="radio" name="restaurant" value="true" required>
-        Restaurant available
-        </label>
-        <label class="radio">
-        <input type="radio" name="restaurant" value="false">
-        No Restaurant
-        </label>
+      <div class="field">
+        <label class="label">Number of Screens</label>
+        <div class="control">
+          <input class="input" name="screens" placeholder="Number of Screens" required type="number" min = "0">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Licensed</label>
-      <div class="control">
-        <label class="radio">
-        <input type="radio" name="alcohol" value="true" required>
-        Sell Alcohol
-        </label>
-        <label class="radio">
-        <input type="radio" name="alcohol" value="false">
-        No License
-        </label>
+      <div class="field">
+        <label class="label">Image (hyperlink )</label>
+        <div class="control">
+          <input class="input" name="image" type="text" placeholder="Image" required pattern = "^http.*">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Parking</label>
-      <div class="control">
-        <label class="radio">
-        <input type="radio" name="parking" value="true" required>
-        Parking Available
-        </label>
-        <label class="radio">
-        <input type="radio" name="parking" value="false">
-        No Parking
-        </label>
+      <div class="field">
+        <label class="label">Restaurant</label>
+        <div class="control radiocontrol">
+          <label class="radio">
+          <input type="radio" name="restaurant" value="true" required>
+          Restaurant available
+          </label>
+          <label class="radio">
+          <input type="radio" name="restaurant" value="false">
+          No Restaurant
+          </label>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Wheelchair accessible</label>
-      <div class="control">
-        <label class="radio">
-        <input type="radio" name="wheelchair" value="true" required>
-        Fully Accessible
-        </label>
-        <label class="radio">
-        <input type="radio" name="wheelchair" value="false">
-        Not Accessible
-        </label>
+      <div class="field">
+        <label class="label">Licensed</label>
+        <div class="control radiocontrol">
+          <label class="radio">
+          <input type="radio" name="alcohol" value="true" required>
+          Sell Alcohol
+          </label>
+          <label class="radio">
+          <input type="radio" name="alcohol" value="false">
+          No License
+          </label>
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">OST showings</label>
-      <div class="control">
-        <label class="radio">
-        <input type="radio" name="ost" value="true" required>
-        OST showings available
-        </label>
-        <label class="radio">
-        <input type="radio" name="ost" value="false">
-        No OST showings
-        </label>
+      <div class="field">
+        <label class="label">Parking</label>
+        <div class="control radiocontrol">
+          <label class="radio">
+          <input type="radio" name="parking" value="true" required>
+          Parking Available
+          </label>
+          <label class="radio">
+          <input type="radio" name="parking" value="false">
+          No Parking
+          </label>
+        </div>
       </div>
-    </div>
+      <div class="field">
+        <label class="label">Wheelchair accessible</label>
+        <div class="control radiocontrol">
+          <label class="radio">
+          <input type="radio" name="wheelchair" value="true" required>
+          Fully Accessible
+          </label>
+          <label class="radio">
+          <input type="radio" name="wheelchair" value="false">
+          Not Accessible
+          </label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">OST showings</label>
+        <div class="control radiocontrol">
+          <label class="radio">
+          <input type="radio" name="ost" value="true" required>
+          OST showings available
+          </label>
+          <label class="radio">
+          <input type="radio" name="ost" value="false">
+          No OST showings
+          </label>
+        </div>
+      </div>
 
-    <div class="control">
-      <button class="button is-primary">Submit</button>
-    </div>
-  </form>
+      <div class="control">
+        <button class="button is-primary">Submit</button>
+      </div>
+    </form>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container myprofile">
   <div class="columns">
     <div class="column">
       <figure class="image">
@@ -14,10 +14,11 @@
         </div>
         <span>My Comments</span>
         <ul class="comments">
+          <div class="box">
           <% user.comments.forEach(comment => { %>
             <% if(comment.cinema) { %>
             <li>
-            <div class="box">
+
               <article class="media">
                 <div class="media-content">
                   <div class="content">
@@ -29,10 +30,11 @@
                   </div>
                 </div>
               </article>
-              </div>
+
             </li>
             <% } %>
           <% }) %>
+          </div>
         </ul>
       </div>
       <div class="">

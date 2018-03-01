@@ -8,5 +8,15 @@ module.exports = [
     passwordConfirmation: 'lalilu123',
     comments: [],
     favorites: []
+  },
+  {
+    username: 'test',
+    avatar: 'https://enbaca.com/web/assets/image-resources/avatar.png',
+    admin: false,
+    email: 'test@mail.com',
+    password: 'password',
+    passwordConfirmation: 'password',
+    comments: [],
+    favorites: []
   }
 ];

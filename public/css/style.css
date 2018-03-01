@@ -1,66 +1,257 @@
-* body {
-  background-color: #7f7f7f; }
-  * body .navbar {
-    background-color: #ffe; }
-    * body .navbar .navbar-brand a {
-      width: 15vw; }
-  * body .hero-body {
+* {
+  font-family: 'Poiret One', cursive; }
+  * body {
+    background-color: #7f7f7f;
     background-image: url("/images/cinema_background2.jpg");
-    background-size: cover;
-    height: 100vh; }
-    * body .hero-body div h1 {
-      color: #ffe;
-      font-size: 3rem; }
-    * body .hero-body div h2 {
-      color: #ffe;
-      font-size: 2rem; }
-  * body main {
-    background-color: #7f7f7f; }
-    * body main .columns {
-      margin-top: 2vh; }
-      * body main .columns div a .card .card-image img {
-        height: 60vh; }
-      * body main .columns div a .card .card-content {
-        height: 12vh;
-        padding: 0.5rem;
-        background-color: #ffe;
-        border: 0px solid #ffe; }
-  * body .show .heroimage {
-    margin-top: 2vh;
-    flex-basis: 100%; }
-    * body .show .heroimage .image img {
-      height: 60vh;
-      width: 90vw; }
-  * body .show .credits {
-    text-align: center;
-    background-color: black;
-    color: white;
-    overflow: scroll;
-    height: 50vh;
-    width: 90vw;
-    padding: 0;
-    flex-basis: 100%; }
-    * body .show .credits .title {
-      color: white;
-      font-size: 4rem; }
-    * body .show .credits .subtitle {
-      color: white; }
-    * body .show .credits table {
-      margin: 0 auto; }
-  * body .show .comments {
-    width: 90vw;
-    padding: 0; }
-  * body .show .postcomments {
-    width: 90vw;
-    padding: 0; }
-  * body .login {
-    background-image: url("/images/cinema_background2.jpg"); }
-    * body .login form .field input {
-      background-color: #ffe; }
-  * body .registration {
-    background-image: url("/images/cinema_background2.jpg"); }
-    * body .registration form .field input {
-      background-color: #ffe; }
+    background-size: auto;
+    height: 100%; }
+    * body .navbar {
+      background-color: #ffe;
+      font-weight: 600;
+      font-size: 1.25rem; }
+      * body .navbar .navbar-brand a {
+        width: 15vw; }
+    * body .hero-body {
+      background-image: url("/images/cinema_background2.jpg");
+      background-size: cover;
+      height: 100vh;
+      position: relative; }
+      * body .hero-body div {
+        position: absolute;
+        top: 10%; }
+        * body .hero-body div .title {
+          font-weight: 800;
+          font-size: 5rem; }
+        * body .hero-body div .subtitle {
+          font-weight: 500;
+          font-size: 2.5rem; }
+    * body main {
+      background-color: transparent; }
+      * body main .columns {
+        margin-top: 2vh; }
+        * body main .columns div a .card .card-image img {
+          height: 60vh; }
+        * body main .columns div a .card .card-content {
+          height: 12vh;
+          padding: 0.5rem;
+          background-color: #ffe;
+          border: 0px solid #ffe; }
+    * body .show {
+      display: flex;
+      flex-direction: column; }
+      * body .show .adminbuttons {
+        margin: 2vh auto;
+        display: flex; }
+      * body .show .heroimage {
+        margin: 2vh 0;
+        flex-basis: 100%; }
+        * body .show .heroimage .image img {
+          height: 60vh;
+          width: 100%; }
+      * body .show .credits {
+        font-family: 'Poller One', cursive;
+        text-align: center;
+        background-color: black;
+        color: #ffd700;
+        overflow: scroll;
+        height: 50vh;
+        width: 90vw;
+        flex-basis: 100%; }
+        * body .show .credits .title {
+          font-family: 'Poller One', cursive;
+          color: #ffd700;
+          font-size: 4rem; }
+        * body .show .credits .subtitle {
+          font-family: 'Poller One', cursive;
+          color: #ffd700; }
+        * body .show .credits table {
+          margin: 0 auto;
+          font-family: 'Poller One', cursive; }
+          * body .show .credits table tr {
+            display: flex;
+            justify-content: space-between; }
+            * body .show .credits table tr td {
+              font-family: 'Poller One', cursive; }
+        * body .show .credits p {
+          font-family: 'Poller One', cursive; }
+      * body .show .comments {
+        font-family: 'Poller One', cursive;
+        width: 90vw;
+        padding: 0; }
+        * body .show .comments .box {
+          font-family: 'Poller One', cursive;
+          background-color: transparent;
+          color: white;
+          border: 1px white solid; }
+          * body .show .comments .box a {
+            font-size: 1rem;
+            font-family: 'Poller One', cursive; }
+          * body .show .comments .box h4 {
+            font-size: 1rem;
+            font-family: 'Poller One', cursive; }
+          * body .show .comments .box p {
+            font-family: 'Poller One', cursive;
+            color: #ffd700; }
+      * body .show .postcomment .subtitle {
+        margin-bottom: 0.25rem;
+        font-size: 3rem;
+        color: white;
+        font-weight: bold;
+        text-decoration: underline; }
+      * body .show .postcomment form .field .label {
+        font-size: 1.5rem;
+        color: white;
+        font-weight: bold; }
+      * body .show .postcomment form .field .textarea {
+        width: 30vw;
+        background-color: #ffe; }
+    * body .addcinema {
+      background-size: auto;
+      padding: 2.5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: transparent; }
+      * body .addcinema form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: transparent; }
+        * body .addcinema form .field {
+          display: flex;
+          justify-content: center;
+          flex-direction: column; }
+          * body .addcinema form .field .label {
+            font-weight: 700;
+            text-decoration: underline;
+            font-size: 1.5rem;
+            color: white; }
+          * body .addcinema form .field .input {
+            background-color: #ffe;
+            width: 40vw; }
+          * body .addcinema form .field .control {
+            display: flex;
+            justify-content: center;
+            width: 40vw; }
+          * body .addcinema form .field .textarea {
+            background-color: #ffe; }
+          * body .addcinema form .field .control {
+            display: flex;
+            justify-content: space-between; }
+            * body .addcinema form .field .control .select {
+              align-self: center; }
+            * body .addcinema form .field .control .radio {
+              color: white;
+              font-size: 1.25rem;
+              font-weight: 600; }
+          * body .addcinema form .field .radiocontrol {
+            width: 35vw; }
+    * body .login {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: transparent; }
+      * body .login div .title {
+        margin-bottom: 10vh;
+        font-size: 3rem; }
+      * body .login div form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: transparent; }
+        * body .login div form .field {
+          display: flex;
+          justify-content: center;
+          flex-direction: column; }
+          * body .login div form .field label {
+            font-weight: 700;
+            text-decoration: underline;
+            font-size: 1.5rem;
+            color: white; }
+          * body .login div form .field input {
+            background-color: #ffe;
+            width: 30vw; }
+    * body .registration {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: transparent;
+      background-size: auto; }
+      * body .registration div .title {
+        margin-bottom: 10vh;
+        font-size: 3rem; }
+      * body .registration div form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: transparent; }
+        * body .registration div form .field {
+          display: flex;
+          justify-content: center;
+          flex-direction: column; }
+          * body .registration div form .field label {
+            font-weight: 700;
+            text-decoration: underline;
+            font-size: 1.5rem;
+            color: white; }
+          * body .registration div form .field input {
+            background-color: #ffe;
+            width: 40vw; }
+    * body .moderation {
+      height: 100vh; }
+    * body .myprofile {
+      height: 100%;
+      padding: 2.5%;
+      display: flex;
+      justify-content: space-between; }
+      * body .myprofile .columns .column .title {
+        font-size: 3rem; }
+      * body .myprofile .columns .column .subtitle {
+        font-size: 1.5rem;
+        font-weight: 500; }
+      * body .myprofile .columns .column span {
+        font-size: 1.5rem;
+        font-weight: 500;
+        text-decoration: underline; }
+      * body .myprofile img {
+        width: 30vw; }
+      * body .myprofile .box {
+        max-height: 80vh;
+        width: 50vw;
+        overflow: scroll;
+        background-color: #ffe; }
+        * body .myprofile .box article {
+          height: 40vh;
+          padding: 5px;
+          overflow: scroll;
+          border-bottom: 1px solid black;
+          margin-bottom: 2.5vh; }
+    * body .profiles {
+      height: 100vh;
+      padding: 2.5%;
+      display: flex;
+      justify-content: space-between; }
+      * body .profiles img {
+        width: 30vw; }
+      * body .profiles .box {
+        height: 70vh;
+        width: 50vw;
+        overflow: scroll;
+        background-color: #ffe; }
+      * body .profiles article {
+        height: 25vh;
+        padding: 5px;
+        overflow: scroll;
+        border-bottom: 1px solid black;
+        margin-bottom: 2.5vh; }
 
 .frame {
   border-image: url("//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/frame.png") 93 92 87 92 stretch stretch;
