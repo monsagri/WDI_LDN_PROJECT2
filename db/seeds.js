@@ -15,8 +15,8 @@ const counterData = require('./data/counters');
 // connect to database
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/cinema-database', (err, db) => {
   // clear database
-  // db.dropDatabase();
-  Cinema.collection.drop();
+  db.dropDatabase();
+  // Cinema.collection.drop();
 
   // seed Cinema collection with data
   Cinema.create(cinemaData)
@@ -26,7 +26,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/cinema-database
     .catch(err => console.log(err))
 
     // // seed User collection
-    // .then(User.create(userData))
+    .then(User.create(userData))
     // seed Counter
     .then(Counter.create(counterData))
     // log any errors
