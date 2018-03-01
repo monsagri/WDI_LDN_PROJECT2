@@ -26,9 +26,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/cinema-database
     .catch(err => console.log(err))
 
     // // seed User collection
-    .then(User.create(userData))
+    .then(() => User.create(userData))
     // seed Counter
-    .then(Counter.create(counterData))
+    .then(() => Counter.create(counterData))
     // log any errors
     .catch(err => console.log(err))
 
