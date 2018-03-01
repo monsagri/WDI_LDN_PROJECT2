@@ -1,37 +1,40 @@
-<span>With great power comes great responsibility</span>
-<ul class="comments">
-  <% unapprovedComments.forEach(comment => { %>
-    <% if(comment.cinema) { %>
-    <li>
-    <div class="box">
-      <article class="media">
-        <div class="media-content">
-          <div class="content">
-          <% if(comment.approved !== true) { %>
-          <form class="approve" method="POST" action="/moderation/<%= comment.cinema._id %>/comments/<%= comment._id %>">
-          <input type="hidden" name="_method" value="PUT">
-          <button class="button is-primary">Approve</button>
-          </form>
-          <form class="delete" method="POST" action="/moderation/<%= comment.cinema._id %>/comments/<%= comment._id %>">
-          <input type="hidden" name="_method" value="DELETE">
-          <button class="button is-danger">Delete</button>
-          </form>
-          <% } %>
-            <h2> <a href="/cinemas/<%= comment.cinema._id %>"> <%= comment.cinema.name %> </a> <h2>
-            <h4> Rating: <%= comment.rating %> </h4>
-            <p>
-              <%= comment.content %>
-            </p>
-            <p>
-            <% if(comment.user) { %>
-              <a href="/profiles/<%= comment.user._id %>"> <%= comment.user.username %> </a>
+<h1>With great power comes great responsibility</h1>
+<div class="container has-text-center">
+  <h3>Unapproved Comments</h3>
+  <ul class="comments">
+    <% unapprovedComments.forEach(comment => { %>
+      <% if(comment.cinema) { %>
+      <li>
+      <div class="box">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+            <% if(comment.approved !== true) { %>
+            <form class="approve" method="POST" action="/moderation/<%= comment.cinema._id %>/comments/<%= comment._id %>">
+            <input type="hidden" name="_method" value="PUT">
+            <button class="button is-primary">Approve</button>
+            </form>
+            <form class="delete" method="POST" action="/moderation/<%= comment.cinema._id %>/comments/<%= comment._id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="button is-danger">Delete</button>
+            </form>
             <% } %>
-            </p>
+              <h2> <a href="/cinemas/<%= comment.cinema._id %>"> <%= comment.cinema.name %> </a> <h2>
+              <h4> Rating: <%= comment.rating %> </h4>
+              <p>
+                <%= comment.content %>
+              </p>
+              <p>
+              <% if(comment.user) { %>
+                <a href="/profiles/<%= comment.user._id %>"> <%= comment.user.username %> </a>
+              <% } %>
+              </p>
+            </div>
           </div>
+        </article>
         </div>
-      </article>
-      </div>
-    </li>
-    <% } %>
-  <% }) %>
-</ul>
+      </li>
+      <% } %>
+    <% }) %>
+  </ul>
+</div>

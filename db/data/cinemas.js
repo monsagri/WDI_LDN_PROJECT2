@@ -14,11 +14,11 @@ module.exports =[
     userimages: [{
       content: 'https://tr-images.condecdn.net/image/pG3bprGbAaO/crop/1620'
     }],
-    description: 'Description goes here.',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     favoritedBy: []
   },
   {
-    name: 'Everyman Screen on the Green',
+    name: 'Screen on the Green',
     originalRating: 5,
     rating: 5,
     location: '83 Upper St, London N1 0NP',
@@ -32,7 +32,7 @@ module.exports =[
     userimages: [{
       content: 'https://tr-images.condecdn.net/image/Q80ZNoBdROM/crop/1620'
     }],
-    description: 'Description goes here.',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     favoritedBy: []
   },
   {
@@ -50,7 +50,7 @@ module.exports =[
     userimages: [{
       content: 'https://assets.londonist.com/uploads/2016/09/i730/arthouse_790.jpg'
     }],
-    description: 'Description goes here.',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     favoritedBy: []
   },
   {
@@ -68,7 +68,7 @@ module.exports =[
     userimages: [{
       content: 'https://assets.londonist.com/uploads/2016/09/i730/institute_francais_875.jpg'
     }],
-    description: 'Description goes here.',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     favoritedBy: []
   },
   {
@@ -86,7 +86,7 @@ module.exports =[
     userimages: [{
       content: 'https://assets.londonist.com/uploads/2016/09/i730/electric_875.jpg'
     }],
-    description: 'Description goes here.',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     favoritedBy: []
   },
   {
@@ -104,7 +104,7 @@ module.exports =[
     userimages: [{
       content: 'https://assets.londonist.com/uploads/2016/09/i730/phoenix_cinema_frontage_875.jpg'
     }],
-    description: 'Description goes here.',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     favoritedBy: []
   }
 ];

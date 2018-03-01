@@ -39,7 +39,7 @@ schema.virtual('averageRating')
       currentRating += comment.rating;
     });
     currentRating = currentRating / (this.comments.length + 1);
-    return currentRating;
+    return currentRating.toFixed(1);
   });
 
 // Rating should be included in comments in order to allow removing individual ratings

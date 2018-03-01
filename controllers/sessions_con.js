@@ -10,7 +10,9 @@ mongoose.Promise = require('bluebird');
 const User = require('../models/user');
 // get the cinema model
 const Cinema = require('../models/cinema');
-
+// Get the counter model
+const Counter = require('../models/counter');
+// keep
 // render the login form
 function showRoute(req, res) {
   res.render('sessions/new');
@@ -74,32 +76,6 @@ function unFavoriteRoute(req, res) {
   res.redirect(`/cinemas/${req.params.id}`);
 }
 
-// This is some advanced magic shit
-
-// function moderationRoute(req, res) {
-//   console.log(Cinema.aggregate(
-//     [
-//       {
-//         $project: {
-//           name: 1,
-//           dimensions: { $objectToArray: '$comments' }
-//         }
-//       }
-//     ]
-//   ));
-//   const unapprovedComments = [];
-//   // Search through all cinema records
-//   Cinema.find(
-//     { comments: { $exists: true } } ).forEach(cinema => {
-//     // find comments within the record that are not approced and add them to the unapprovedComments array
-//     cinema.comments.filter(comment => comment.approved !== true).forEach(comment => {
-//       unapprovedComments.push(comment);
-//     });
-//   })
-//     .then(res.render('sessions/moderation', { unapprovedComments }));
-//
-// }
-
 function moderationRoute(req, res) {
   Cinema.find({ 'comments.approved': false })
     .populate('comments.cinema')
@@ -123,6 +99,15 @@ function moderatorApproveRoute(req, res) {
       const comment = cinema.comments.id(req.params.id);
       comment.approved = true;
       return cinema.save();
+    })
+    .then(() => {
+      Counter.findOne()
+        .then(counter => {
+          console.log(counter);
+          counter.comments--;
+          console.log(counter);
+          counter.save();
+        });
     });
   res.redirect('/moderation');
 }
@@ -133,6 +118,15 @@ function moderatorDeleteRoute(req, res) {
       const comment = cinema.comments.id(req.params.id);
       comment.remove();
       return cinema.save();
+    })
+    .then(() => {
+      Counter.findOne()
+        .then(counter => {
+          console.log(counter);
+          counter.comments--;
+          console.log(counter);
+          counter.save();
+        });
     });
   res.redirect('/moderation');
 }

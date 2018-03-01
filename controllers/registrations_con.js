@@ -8,8 +8,10 @@ function newRoute(req, res) {
 
 // input new value into user database and render the main page again
 function createRoute(req, res) {
-  User.create(req.body)
-    .then(() => res.redirect('cinemas/'));
+  if(req.body.password === req.body.passwordConfirmation) {
+    User.create(req.body)
+      .then(() => res.redirect('cinemas/'));
+  } else res.render('pages/422');
 }
 module.exports = {
   new: newRoute,

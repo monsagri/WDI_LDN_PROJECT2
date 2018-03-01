@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
-      <img src=# alt="Keepin' it reel">
+      <img src="/images/reel.svg" alt="Keepin' it reel">
       &nbsp;
       Keepin' it reel
     </a>
@@ -25,6 +25,8 @@
       <%# set this to admin again if i get the moderation page working  %>
       <% if(locals.isAdmin) { %>
         <a class="navbar-item" href="/moderation">Moderation</a>
+        <a class="navbar-item" href="/moderation"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+        <span>  </span>
       <% } %>
     </div>
   </div>

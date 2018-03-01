@@ -11,6 +11,8 @@ const adminRoute = require('../lib/adminRoute');
 // set up our request handlers
 router.get('/', (req, res) => res.render('pages/home'));
 
+router.all('/422', (req, res) => res.render('pages/422'));
+
 router.route('/cinemas')
   .get(cinemasCon.index)
   .post(secureRoute, cinemasCon.create);
@@ -62,5 +64,6 @@ router.route('/moderation/:id/comments/:id')
 router.route('/logout')
   .get(sessionsCon.logout);
 
+router.all('/*', (req, res) => res.render('pages/404'));
 
 module.exports = router;

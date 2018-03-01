@@ -1,0 +1,74 @@
+* body {
+  background-color: #7f7f7f; }
+  * body .navbar {
+    background-color: #ffe; }
+    * body .navbar .navbar-brand a {
+      width: 15vw; }
+  * body .hero-body {
+    background-image: url("/images/cinema_background2.jpg");
+    background-size: cover;
+    height: 100vh; }
+    * body .hero-body div h1 {
+      color: #ffe;
+      font-size: 3rem; }
+    * body .hero-body div h2 {
+      color: #ffe;
+      font-size: 2rem; }
+  * body main {
+    background-color: #7f7f7f; }
+    * body main .columns {
+      margin-top: 2vh; }
+      * body main .columns div a .card .card-image img {
+        height: 60vh; }
+      * body main .columns div a .card .card-content {
+        height: 12vh;
+        padding: 0.5rem;
+        background-color: #ffe;
+        border: 0px solid #ffe; }
+  * body .show .heroimage {
+    margin-top: 2vh;
+    flex-basis: 100%; }
+    * body .show .heroimage .image img {
+      height: 60vh;
+      width: 90vw; }
+  * body .show .credits {
+    text-align: center;
+    background-color: black;
+    color: white;
+    overflow: scroll;
+    height: 50vh;
+    width: 90vw;
+    padding: 0;
+    flex-basis: 100%; }
+    * body .show .credits .title {
+      color: white;
+      font-size: 4rem; }
+    * body .show .credits .subtitle {
+      color: white; }
+    * body .show .credits table {
+      margin: 0 auto; }
+  * body .show .comments {
+    width: 90vw;
+    padding: 0; }
+  * body .show .postcomments {
+    width: 90vw;
+    padding: 0; }
+  * body .login {
+    background-image: url("/images/cinema_background2.jpg"); }
+    * body .login form .field input {
+      background-color: #ffe; }
+  * body .registration {
+    background-image: url("/images/cinema_background2.jpg"); }
+    * body .registration form .field input {
+      background-color: #ffe; }
+
+.frame {
+  border-image: url("//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/frame.png") 93 92 87 92 stretch stretch;
+  border-color: #f4be52;
+  border-style: inset;
+  border-width: 30px;
+  display: block;
+  height: auto;
+  background-color: #ffe; }
+
+/*# sourceMappingURL=style.css.map */

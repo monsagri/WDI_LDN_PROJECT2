@@ -2,6 +2,10 @@
 const Cinema = require('../models/cinema');
 // Get the User model
 const User = require('../models/user');
+// Get the counter model
+const Counter = require('../models/counter');
+
+
 
 // rendering the cinema index
 function indexRoute(req, res) {
@@ -64,11 +68,21 @@ function commentsCreateRoute(req, res, next){
       return cinema.save();
     })
     .then(() => {
-      User.findOne(req.currentUser)
+      User.findOne(req.currentUser._id)
         .then(user => {
+          console.log(user);
           user.comments.push(req.body);
           console.log(user.comments[user.comments.length-1]);
           return user.save();
+        });
+    })
+    .then(() => {
+      Counter.findOne()
+        .then(counter => {
+          console.log(counter);
+          counter.comments++;
+          console.log(counter);
+          counter.save();
         });
     })
     .then(() => res.redirect(`/cinemas/${thisCinema}`))
@@ -81,6 +95,15 @@ function commentsDeleteRoute(req, res, next){
       const comment = cinema.comments.id(req.params.commentId);
       comment.remove();
       return cinema.save();
+    })
+    .then(() => {
+      Counter.findOne()
+        .then(counter => {
+          console.log(counter);
+          counter.comments--;
+          console.log(counter);
+          counter.save();
+        });
     })
     .then(cinema => res.redirect(`/cinemas/${cinema._id}`))
     .catch(next);

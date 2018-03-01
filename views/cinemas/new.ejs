@@ -36,20 +36,20 @@
     <div class="field">
       <label class="label">Number of Screens</label>
       <div class="control">
-        <input class="input" name="screens" type="text" placeholder="Number of Screens" required type= Number min = "0">
+        <input class="input" name="screens" placeholder="Number of Screens" required type="number" min = "0">
       </div>
     </div>
     <div class="field">
-      <label class="label">Image</label>
+      <label class="label">Image (hyperlink )</label>
       <div class="control">
-        <input class="input" name="image" type="text" placeholder="Image" required >
+        <input class="input" name="image" type="text" placeholder="Image" required pattern = "^http.*">
       </div>
     </div>
     <div class="field">
       <label class="label">Restaurant</label>
       <div class="control">
         <label class="radio">
-        <input type="radio" name="restaurant" value="true">
+        <input type="radio" name="restaurant" value="true" required>
         Restaurant available
         </label>
         <label class="radio">
@@ -62,7 +62,7 @@
       <label class="label">Licensed</label>
       <div class="control">
         <label class="radio">
-        <input type="radio" name="alcohol" value="true">
+        <input type="radio" name="alcohol" value="true" required>
         Sell Alcohol
         </label>
         <label class="radio">
@@ -75,7 +75,7 @@
       <label class="label">Parking</label>
       <div class="control">
         <label class="radio">
-        <input type="radio" name="parking" value="true">
+        <input type="radio" name="parking" value="true" required>
         Parking Available
         </label>
         <label class="radio">
@@ -88,7 +88,7 @@
       <label class="label">Wheelchair accessible</label>
       <div class="control">
         <label class="radio">
-        <input type="radio" name="wheelchair" value="true">
+        <input type="radio" name="wheelchair" value="true" required>
         Fully Accessible
         </label>
         <label class="radio">
@@ -101,7 +101,7 @@
       <label class="label">OST showings</label>
       <div class="control">
         <label class="radio">
-        <input type="radio" name="ost" value="true">
+        <input type="radio" name="ost" value="true" required>
         OST showings available
         </label>
         <label class="radio">

@@ -1,9 +1,9 @@
 <main class="container">
-  <div class="columns is-multiline">
+  <div class="columns is-variable is-2 is-multiline">
     <% cinemas.forEach(cinema => { %>
-    <div class="column is-one-quarter-desktop is-half-tablet">
+    <div class="column is-one-third-desktop is-half-tablet">
       <a href="/cinemas/<%= cinema._id %>">
-        <div class="card">
+        <div class="card frame">
           <div class="card-image">
             <figure class="image">
               <img src="<%= cinema.image %>" alt="<%= cinema.name %>">
@@ -11,7 +11,7 @@
           </div>
           <div class="card-content">
             <h3 class="title"><%= cinema.name %></h3>
-            <h4 class="subtitle">Rating: <%= cinema.averageRating %></h4>
+            <h4 class="subtitle">Rating: <%= cinema.averageRating %> <i class="fa fa-star"></i></h4>
           </div>
         </div>
         </a>

@@ -29,6 +29,9 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 
+app.use(express.static(`${__dirname}/public`));
+
+
 // Use Body Parser to understand form input
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -60,6 +63,14 @@ mongoose.connect('mongodb://localhost/cinema-database');
 
 // use my Router
 app.use(router);
+
+//set up a global error catcher
+
+app.use((err, req, res, next) => { //eslint-disable-line
+  console.log(err);
+  if(err === 'ValidationError') return res.render('pages/442');
+  res.render('pages/500', {err});
+});
 
 // Configure the port
 

@@ -1,25 +1,25 @@
-<div class="container">
+<div class="container registration has-text-center">
   <form method="POST" action="/register">
     <div class="field">
       <label for="username">Username</label>
-      <input class="input" type="text" name="username" id="username">
+      <input class="input" type="text" name="username" id="username" required>
     </div>
     <div class="field">
-      <label for="avatar">Avatar</label>
-      <input class="input" type="text" name="avatar" id="avatar" value="https://bulma.io/images/placeholders/128x128.png">
+      <label for="avatar">Avatar (use links)</label>
+      <input class="input" type="text" name="avatar" id="avatar" value="https://bulma.io/images/placeholders/128x128.png" required pattern = "^http.*">
     </div>
     <div class="field">
       <label for="email">Email</label>
-      <input class="input" type="text" name="email" id="email">
+      <input class="input" type="text" name="email" id="email" required pattern = "^.*@.*\..*$">
     </div>
     <div class="field">
       <label for="password">Password</label>
-      <input class="input" type="password" name="password" id="password">
+      <input class="input" type="password" name="password" id="password" required>
     </div>
     <div class="field">
       <label for="passwordConfirmation">Password Confirmation</label>
-      <input class="input" type="password" name="passwordConfirmation" id="passwordConfirmation">
+      <input class="input" type="password" name="passwordConfirmation" id="passwordConfirmation" required>
     </div>
-    <button class="button">Register</button>
+    <button class="button">Join the Club</button>
   </form>
   </div>
