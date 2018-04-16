@@ -53,6 +53,10 @@ app.use(session({
   saveUninitialized: false
 }));
 
+// use flash messages
+
+app.use(flash);
+
 // use our personal userAuth
 app.use(userAuth);
 
